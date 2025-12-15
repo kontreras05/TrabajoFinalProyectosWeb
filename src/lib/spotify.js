@@ -44,3 +44,40 @@ export const searchArtists = async (query, token) => {
     });
     return response.json();
 };
+
+export const searchTracks = async (query, token) => {
+    const response = await fetch(`https://api.spotify.com/v1/search?type=track&q=${encodeURIComponent(query)}&limit=10`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+    return response.json();
+};
+
+export const getArtistTopTracks = async (artistId, token, market = 'US') => {
+    const response = await fetch(`https://api.spotify.com/v1/artists/${artistId}/top-tracks?market=${market}`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+    return response.json();
+};
+
+export const getUserTopItems = async (type, token, time_range = 'medium_term', limit = 20) => {
+    // type: 'artists' or 'tracks'
+    const response = await fetch(`https://api.spotify.com/v1/me/top/${type}?time_range=${time_range}&limit=${limit}`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+    return response.json();
+};
+
+export const searchTracksByGenre = async (genre, token) => {
+    const response = await fetch(`https://api.spotify.com/v1/search?type=track&q=genre:${encodeURIComponent(genre)}&limit=10`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+    return response.json();
+};
