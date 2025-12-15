@@ -14,7 +14,9 @@ export const SCOPES = [
     'user-top-read',
     'user-read-recently-played',
     'playlist-read-private',
-    'playlist-read-collaborative'
+    'playlist-read-collaborative',
+    'playlist-modify-private',
+    'playlist-modify-public'
 ].join(' ');
 
 export const getLoginUrl = () => {
