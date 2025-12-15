@@ -108,11 +108,14 @@ export default function Dashboard() {
     if (!token) return null;
 
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen bg-gradient-to-b from-[#121212] via-[#000000] to-[#121212] text-white">
             <Header />
-            <main className="p-8 max-w-[1200px] mx-auto">
-                <h2 className="text-2xl mb-4 text-white">Your Taste Overview</h2>
-                <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6 mb-12">
+            <main className="p-8 max-w-[1400px] mx-auto animate-fade-in">
+                <header className="mb-10 text-center">
+                    <h2 className="text-4xl md:text-5xl font-black bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-green-600 mb-2">Your Taste Mixer</h2>
+                    <p className="text-gray-400 text-lg">Curate, discover, and save your perfect vibe.</p>
+                </header>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                     <ArtistWidget
                         selectedItems={selectedArtists}
                         onSelect={setSelectedArtists}
