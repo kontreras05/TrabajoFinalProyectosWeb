@@ -16,6 +16,7 @@ export default function Dashboard() {
     const [token, setToken] = useState(null);
     const [selectedArtists, setSelectedArtists] = useState([]);
     const [selectedTracks, setSelectedTracks] = useState([]);
+    const [selectedDecades, setSelectedDecades] = useState([]);
     const [selectedGenres, setSelectedGenres] = useState([]);
     const router = useRouter();
 
@@ -48,7 +49,10 @@ export default function Dashboard() {
                         selectedItems={selectedTracks}
                         onSelect={setSelectedTracks}
                     />
-                    <DecadeWidget />
+                    <DecadeWidget
+                        selectedItems={selectedDecades}
+                        onSelect={setSelectedDecades}
+                    />
                     <MoodWidget />
                     <PopularityWidget />
                 </div>
