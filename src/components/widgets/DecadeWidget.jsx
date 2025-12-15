@@ -23,15 +23,18 @@ export default function DecadeWidget({ onSelect, selectedItems = [] }) {
     };
 
     return (
-        <div className="widget decade-widget">
-            <h3>Favorite Decades</h3>
-            <div className="decades-grid">
+        <div className="bg-[#181818] p-6 rounded-lg transition-colors duration-300 hover:bg-[#282828]">
+            <h3 className="text-xl mb-4 text-white">Favorite Decades</h3>
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(80px,1fr))] gap-2.5 mt-4">
                 {DECADES.map(decade => {
                     const isSelected = selectedItems.find(item => item.id === decade.id);
                     return (
                         <button
                             key={decade.id}
-                            className={`decade-btn ${isSelected ? 'selected' : ''}`}
+                            className={`p-2.5 rounded-[20px] cursor-pointer text-sm transition-all duration-200 border border-[#444] ${isSelected
+                                    ? 'bg-[#1DB954] text-black border-[#1DB954] font-bold'
+                                    : 'bg-[#333] text-[#b3b3b3] hover:bg-[#444] hover:text-white hover:scale-105'
+                                }`}
                             onClick={() => handleSelect(decade)}
                         >
                             {decade.label}
@@ -39,35 +42,6 @@ export default function DecadeWidget({ onSelect, selectedItems = [] }) {
                     );
                 })}
             </div>
-            <style jsx>{`
-        .decades-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-            gap: 10px;
-            margin-top: 1rem;
-        }
-        .decade-btn {
-            background: #333;
-            border: 1px solid #444;
-            color: #b3b3b3;
-            padding: 10px;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 0.9rem;
-        }
-        .decade-btn:hover {
-            background: #444;
-            color: white;
-            transform: scale(1.05);
-        }
-        .decade-btn.selected {
-            background: #1DB954;
-            color: black;
-            border-color: #1DB954;
-            font-weight: bold;
-        }
-      `}</style>
         </div>
     );
 }

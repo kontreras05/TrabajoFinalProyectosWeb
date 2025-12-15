@@ -94,8 +94,12 @@ export default function Dashboard() {
 
             alert('Playlist saved to Spotify!');
         } catch (error) {
-            console.error('Failed to save playlist', error);
-            alert('Failed to save playlist. Please try again.');
+            console.error('Failed to save playlist:', error);
+            if (error.message.includes('401') || error.message.includes('403')) {
+                alert('Session expired or insufficient permissions. Please logout and login again.');
+            } else {
+                alert(`Failed to save playlist: ${error.message}`);
+            }
         } finally {
             setIsSaving(false);
         }
@@ -104,11 +108,11 @@ export default function Dashboard() {
     if (!token) return null;
 
     return (
-        <div className="dashboard-page">
+        <div className="min-h-screen">
             <Header />
-            <main className="dashboard-content">
-                <h2>Your Taste Overview</h2>
-                <div className="widgets-grid">
+            <main className="p-8 max-w-[1200px] mx-auto">
+                <h2 className="text-2xl mb-4 text-white">Your Taste Overview</h2>
+                <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6 mb-12">
                     <ArtistWidget
                         selectedItems={selectedArtists}
                         onSelect={setSelectedArtists}
@@ -134,7 +138,7 @@ export default function Dashboard() {
                         onPopularityChange={setPopularity}
                     />
                 </div>
-                <section className="playlist-section">
+                <section className="">
                     <PlaylistDisplay
                         tracks={playlist}
                         onRemoveTrack={removeTrack}

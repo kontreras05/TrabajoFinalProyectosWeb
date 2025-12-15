@@ -36,116 +36,44 @@ export default function GenreWidget({ onSelect, selectedItems = [] }) {
     };
 
     return (
-        <div className="widget genre-widget">
-            <h3>Favorite Genres</h3>
+        <div className="bg-[#181818] p-6 rounded-lg transition-colors duration-300 hover:bg-[#282828]">
+            <h3 className="text-xl mb-4 text-white">Favorite Genres</h3>
             <input
                 type="text"
                 placeholder="Search genres..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="widget-search"
+                className="w-full p-2 rounded border border-[#333] bg-[#222] text-white mb-4 placeholder-[#555]"
             />
 
-            <div className="selected-list">
+            <div className="mb-4">
                 {selectedItems.length > 0 && (
-                    <div className="selected-items">
+                    <div className="flex flex-wrap gap-2 mb-2">
                         {selectedItems.map(genre => (
-                            <div key={genre} className="selected-tag">
+                            <div key={genre} className="bg-[#1DB954] text-black px-2.5 py-1 rounded-[12px] flex items-center gap-2 text-xs font-bold">
                                 {genre}
-                                <button onClick={() => handleSelect(genre)} className="remove-btn">×</button>
+                                <button onClick={() => handleSelect(genre)} className="bg-transparent border-none text-black cursor-pointer text-base leading-none hover:text-[#333]">×</button>
                             </div>
                         ))}
                     </div>
                 )}
-                <span className="limit-info">{selectedItems.length}/5 selected</span>
+                <span className="block text-xs text-[#888] text-right mt-2">{selectedItems.length}/5 selected</span>
             </div>
 
-            <div className="results-list">
+            <div className="max-h-[200px] overflow-y-auto grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-2 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent">
                 {filteredGenres.map(genre => {
                     const isSelected = selectedItems.includes(genre);
                     return (
                         <div
                             key={genre}
-                            className={`result-item ${isSelected ? 'selected' : ''}`}
+                            className={`p-2 bg-[#333] rounded cursor-pointer text-center transition-colors hover:bg-[#444] ${isSelected ? 'bg-[#1DB954] text-black font-bold' : ''}`}
                             onClick={() => handleSelect(genre)}
                         >
-                            <span className="genre-name">{genre}</span>
+                            <span>{genre}</span>
                         </div>
                     );
                 })}
             </div>
-
-            <style jsx>{`
-        .widget-search {
-            width: 100%;
-            padding: 0.5rem;
-            border-radius: 4px;
-            border: 1px solid #333;
-            background: #222;
-            color: white;
-            margin-bottom: 1rem;
-        }
-        .selected-list {
-            margin-bottom: 1rem;
-        }
-        .results-list {
-            max-height: 200px;
-            overflow-y: auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 0.5rem;
-        }
-        .result-item {
-            padding: 0.5rem;
-            background: #333;
-            border-radius: 4px;
-            cursor: pointer;
-            text-align: center;
-            transition: background 0.2s;
-        }
-        .result-item:hover {
-            background: #444;
-        }
-        .result-item.selected {
-            background: #1DB954;
-            color: black;
-            font-weight: bold;
-        }
-        .limit-info {
-            display: block;
-            font-size: 0.8rem;
-            color: #888;
-            margin-top: 0.5rem;
-            text-align: right;
-        }
-        .selected-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-        .selected-tag {
-            background: #1DB954;
-            color: black;
-            padding: 0.2rem 0.6rem;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-        .remove-btn {
-            background: none;
-            border: none;
-            color: black;
-            cursor: pointer;
-            font-size: 1rem;
-            line-height: 1;
-        }
-        .remove-btn:hover {
-            color: #333;
-        }
-      `}</style>
         </div>
     );
 }

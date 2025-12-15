@@ -10,12 +10,12 @@ export default function PopularityWidget({ popularity = 50, onPopularityChange }
     };
 
     return (
-        <div className="widget popularity-widget">
-            <h3>Mainstream Factor</h3>
-            <div className="slider-container">
-                <div className="value-display">
-                    <span className="current-value">{popularity}%</span>
-                    <span className="current-label">{getLabel(popularity)}</span>
+        <div className="bg-[#181818] p-6 rounded-lg transition-colors duration-300 hover:bg-[#282828]">
+            <h3 className="text-xl mb-4 text-white">Mainstream Factor</h3>
+            <div className="flex flex-col gap-4 mt-4">
+                <div className="flex flex-col items-center mb-2">
+                    <span className="text-2xl font-bold text-[#1DB954]">{popularity}%</span>
+                    <span className="text-sm text-[#b3b3b3]">{getLabel(popularity)}</span>
                 </div>
                 <input
                     type="range"
@@ -23,63 +23,13 @@ export default function PopularityWidget({ popularity = 50, onPopularityChange }
                     max="100"
                     value={popularity}
                     onChange={(e) => onPopularityChange(parseInt(e.target.value))}
-                    className="slider"
+                    className="w-full h-1.5 bg-[#444] rounded-lg appearance-none cursor-pointer accent-[#1DB954]"
                 />
-                <div className="range-labels">
+                <div className="flex justify-between text-xs text-[#888]">
                     <span>Obscure</span>
                     <span>Mainstream</span>
                 </div>
             </div>
-            <style jsx>{`
-        .slider-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        .value-display {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-        .current-value {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #1DB954;
-        }
-        .current-label {
-            font-size: 0.9rem;
-            color: #b3b3b3;
-        }
-        .slider {
-            -webkit-appearance: none;
-            width: 100%;
-            height: 6px;
-            background: #444;
-            border-radius: 3px;
-            outline: none;
-        }
-        .slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: #1DB954;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .slider::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
-        }
-        .range-labels {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.8rem;
-            color: #888;
-        }
-      `}</style>
         </div>
     );
 }
