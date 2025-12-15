@@ -17,12 +17,12 @@ export default function MoodWidget({ mood, onMoodChange }) {
     return (
         <div className="bg-[#181818]/80 backdrop-blur-sm p-6 rounded-2xl border border-white/5 transition-all duration-300 hover:border-white/10 hover:shadow-2xl hover:shadow-green-900/10 group h-full flex flex-col">
             <h3 className="text-xl font-bold mb-6 text-white flex items-center gap-2">
-                <span className="text-green-500">⚡</span> Mood & Energy
+                <span className="text-green-500">⚡</span> Estado de Ánimo y Energía
             </h3>
             <div className="flex flex-col gap-8 mt-2">
                 <div className="flex flex-col gap-3">
                     <div className="flex justify-between text-sm font-semibold text-white items-end">
-                        <label className="text-gray-300">Energy</label>
+                        <label className="text-gray-300">Energía</label>
                         <span className="text-green-500 text-lg">{currentMood.energy}%</span>
                     </div>
                     <input
@@ -34,14 +34,14 @@ export default function MoodWidget({ mood, onMoodChange }) {
                         className="w-full h-2 bg-white/10 rounded-full appearance-none cursor-pointer accent-green-500 hover:accent-green-400 transition-all"
                     />
                     <div className="flex justify-between text-xs text-gray-500 font-medium">
-                        <span>Calm</span>
-                        <span>Intense</span>
+                        <span>Calma</span>
+                        <span>Intenso</span>
                     </div>
                 </div>
 
                 <div className="flex flex-col gap-3">
                     <div className="flex justify-between text-sm font-semibold text-white items-end">
-                        <label className="text-gray-300">Happiness</label>
+                        <label className="text-gray-300">Felicidad</label>
                         <span className="text-green-500 text-lg">{currentMood.happiness}%</span>
                     </div>
                     <input
@@ -53,14 +53,14 @@ export default function MoodWidget({ mood, onMoodChange }) {
                         className="w-full h-2 bg-white/10 rounded-full appearance-none cursor-pointer accent-green-500 hover:accent-green-400 transition-all"
                     />
                     <div className="flex justify-between text-xs text-gray-500 font-medium">
-                        <span>Sad</span>
-                        <span>Happy</span>
+                        <span>Triste</span>
+                        <span>Feliz</span>
                     </div>
                 </div>
 
                 <div className="flex flex-col gap-3">
                     <div className="flex justify-between text-sm font-semibold text-white items-end">
-                        <label className="text-gray-300">Danceability</label>
+                        <label className="text-gray-300">Bailabilidad</label>
                         <span className="text-green-500 text-lg">{currentMood.danceability}%</span>
                     </div>
                     <input
@@ -72,8 +72,8 @@ export default function MoodWidget({ mood, onMoodChange }) {
                         className="w-full h-2 bg-white/10 rounded-full appearance-none cursor-pointer accent-green-500 hover:accent-green-400 transition-all"
                     />
                     <div className="flex justify-between text-xs text-gray-500 font-medium">
-                        <span>Chill</span>
-                        <span>Dance</span>
+                        <span>Relajado</span>
+                        <span>Bailable</span>
                     </div>
                 </div>
             </div>

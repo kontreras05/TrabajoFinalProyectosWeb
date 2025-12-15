@@ -38,12 +38,12 @@ export default function GenreWidget({ onSelect, selectedItems = [] }) {
     return (
         <div className="bg-[#181818]/80 backdrop-blur-sm p-6 rounded-2xl border border-white/5 transition-all duration-300 hover:border-white/10 hover:shadow-2xl hover:shadow-green-900/10 group h-full flex flex-col">
             <h3 className="text-xl font-bold mb-4 text-white flex items-center gap-2">
-                <span className="text-green-500">🎹</span> Favorite Genres
+                <span className="text-green-500">🎹</span> Géneros Favoritos
             </h3>
             <div className="relative mb-4">
                 <input
                     type="text"
-                    placeholder="Search genres..."
+                    placeholder="Buscar géneros..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="w-full p-3 pl-4 rounded-full border border-transparent bg-[#2a2a2a] text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:bg-[#333] transition-all"
@@ -52,7 +52,7 @@ export default function GenreWidget({ onSelect, selectedItems = [] }) {
 
             <div className="mb-4">
                 <div className="flex justify-between items-center mb-2">
-                    <h4 className="text-sm text-gray-400 font-bold uppercase tracking-wider">Selected</h4>
+                    <h4 className="text-sm text-gray-400 font-bold uppercase tracking-wider">Seleccionados</h4>
                     <span className="text-xs bg-white/10 px-2 py-1 rounded-full text-gray-300">{selectedItems.length}/5</span>
                 </div>
                 {selectedItems.length > 0 ? (
@@ -65,7 +65,7 @@ export default function GenreWidget({ onSelect, selectedItems = [] }) {
                         ))}
                     </div>
                 ) : (
-                    <p className="text-gray-600 text-sm italic py-1">No genres selected</p>
+                    <p className="text-gray-600 text-sm italic py-1">No hay géneros seleccionados</p>
                 )}
             </div>
 

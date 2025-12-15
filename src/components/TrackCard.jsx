@@ -37,14 +37,14 @@ export default function TrackCard({ track, onRemove, isFavorite, onToggleFavorit
                 <button
                     className={`bg-transparent border-none text-[#b3b3b3] cursor-pointer text-xl transition-colors duration-200 p-0 w-8 h-8 flex justify-center items-center rounded-full hover:text-[#ffd700] hover:bg-white/10 ${isFavorite ? 'text-[#ffd700]' : ''}`}
                     onClick={handleFavoriteClick}
-                    title={isFavorite ? "Remove from favorites" : "Add to favorites"}
+                    title={isFavorite ? "Eliminar de favoritos" : "Añadir a favoritos"}
                 >
                     {isFavorite ? '★' : '☆'}
                 </button>
                 <button
                     className="bg-transparent border-none text-[#b3b3b3] cursor-pointer text-xl transition-colors duration-200 p-0 w-8 h-8 flex justify-center items-center rounded-full hover:text-[#ff5555] hover:bg-white/10"
                     onClick={handleRemoveClick}
-                    title="Remove from playlist"
+                    title="Eliminar de la playlist"
                 >
                     ×
                 </button>

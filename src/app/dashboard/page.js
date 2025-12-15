@@ -84,21 +84,21 @@ export default function Dashboard() {
         try {
             const { getCurrentUser, createPlaylist, addTracksToPlaylist } = await import('@/lib/spotify');
             const user = await getCurrentUser(token);
-            if (!user || !user.id) throw new Error('Could not get user profile');
+            if (!user || !user.id) throw new Error('No se pudo obtener el perfil de usuario');
 
-            const playlistData = await createPlaylist(user.id, 'My Taste Mixer Playlist', token);
-            if (!playlistData || !playlistData.id) throw new Error('Could not create playlist');
+            const playlistData = await createPlaylist(user.id, 'Mi Playlist de Taste Mixer', token);
+            if (!playlistData || !playlistData.id) throw new Error('No se pudo crear la playlist');
 
             const uris = playlist.map(track => track.uri);
             await addTracksToPlaylist(playlistData.id, uris, token);
 
-            alert('Playlist saved to Spotify!');
+            alert('¡Playlist guardada en Spotify!');
         } catch (error) {
             console.error('Failed to save playlist:', error);
             if (error.message.includes('401') || error.message.includes('403')) {
-                alert('Session expired or insufficient permissions. Please logout and login again.');
+                alert('Sesión expirada o permisos insuficientes. Por favor, cierra sesión e inicia sesión nuevamente.');
             } else {
-                alert(`Failed to save playlist: ${error.message}`);
+                alert(`Error al guardar la playlist: ${error.message}`);
             }
         } finally {
             setIsSaving(false);
@@ -112,8 +112,8 @@ export default function Dashboard() {
             <Header />
             <main className="p-8 max-w-[1400px] mx-auto animate-fade-in">
                 <header className="mb-10 text-center">
-                    <h2 className="text-4xl md:text-5xl font-black bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-green-600 mb-2">Your Taste Mixer</h2>
-                    <p className="text-gray-400 text-lg">Curate, discover, and save your perfect vibe.</p>
+                    <h2 className="text-4xl md:text-5xl font-black bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-green-600 mb-2">Tu Mezclador de Gustos</h2>
+                    <p className="text-gray-400 text-lg">Cura, descubre y guarda tu vibra perfecta.</p>
                 </header>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                     <ArtistWidget

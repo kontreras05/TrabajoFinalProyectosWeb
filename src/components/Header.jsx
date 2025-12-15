@@ -9,7 +9,7 @@ export default function Header() {
             </div>
             <nav>
                 <ul className="flex gap-6 list-none m-0 p-0 items-center">
-                    <li><Link href="/dashboard" className="text-[#b3b3b3] no-underline transition-colors duration-300 hover:text-white">Dashboard</Link></li>
+                    <li><Link href="/dashboard" className="text-[#b3b3b3] no-underline transition-colors duration-300 hover:text-white">Panel</Link></li>
                     <li>
                         <button
                             className="bg-transparent border border-[#727272] text-white py-2 px-4 rounded-[20px] cursor-pointer font-bold transition-all duration-300 hover:border-white hover:scale-105"
@@ -19,7 +19,7 @@ export default function Header() {
                                 window.location.href = '/';
                             }}
                         >
-                            Logout
+                            Cerrar Sesión
                         </button>
                     </li>
                 </ul>
